@@ -1,0 +1,20 @@
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 1000
+
+Lint/MissingCopEnableDirective:
+  Enable: false
+
+Metrics/ClassLength:
+  Max: 1000
+
+Layout/LineLength:
+  Max: 160
+
+Metrics/BlockLength:
+  Max: 40
