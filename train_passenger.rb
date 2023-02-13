@@ -1,6 +1,7 @@
 require_relative 'train'
 
 class TrainPassenger < Train
+  validate :number, :format, NUMBER_FORMAT
   def initialize(number)
     super(number, type)
   end

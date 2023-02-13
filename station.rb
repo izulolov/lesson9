@@ -1,11 +1,14 @@
 require_relative 'instance_counter'
-
+require_relative 'validation'
 class Station
   include InstanceCounter
-
+  include Validation
   attr_reader :name, :trains
 
   NAME_FORMAT = /^[а-яё\s]{3,}$/i.freeze
+
+  validate :name, :type, Station
+  validate :name, :format, NAME_FORMAT
 
   # rubocop:disable Style/ClassVars
   # Создаем массив класса
@@ -40,12 +43,12 @@ class Station
   end
 
   # Проверка является ли объект класса Station валидным или нет
-  def valid?
-    validate!
-    true
-  rescue StandardError
-    false
-  end
+  #def valid?
+  #  validate!
+  #  true
+  #rescue StandardError
+  #  false
+  #end
 
   # Может возвращать список всех поездов на станции, находящиеся в текущий момент
   def trains_in_station
@@ -67,10 +70,10 @@ class Station
   private
 
   # Валидация название станции
-  def validate!
-    raise 'Название станции должно состоять хотябы из 3-х букв русского алфавита' if @name.length < 3
-    raise 'Название станции должно состоять только из букв русского алфавита' if @name !~ NAME_FORMAT
-  end
+  #def validate!
+  #  raise 'Название станции должно состоять хотябы из 3-х букв русского алфавита' if @name.length < 3
+  #  raise 'Название станции должно состоять только из букв русского алфавита' if @name !~ NAME_FORMAT
+  #end
 
   def get_train!(train)
     @trains << train

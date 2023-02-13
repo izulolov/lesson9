@@ -1,9 +1,10 @@
 require_relative 'manufacturer'
 require_relative 'instance_counter'
-
+require_relative 'validation'
 class Train
   include Manufacturer
   include InstanceCounter
+  include Validation
   attr_reader :speed, :wagon_count, :number, :type, :route, :all_wagon, :station_index
 
   NUMBER_FORMAT = /^[а-яё|\d]{3}(-)*[а-яё|\d]{2}$/i.freeze
@@ -90,9 +91,9 @@ class Train
   private
 
   # Валидация номера поезда
-  def validate!
-    raise 'Неверный формат номера поезда!' if @number !~ NUMBER_FORMAT
-  end
+  #def validate!
+  #  raise 'Неверный формат номера поезда!' if @number !~ NUMBER_FORMAT
+  #end
 
   # Может тормозить (сбрасывать скорость до нуля)
   def stop!

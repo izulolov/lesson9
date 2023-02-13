@@ -1,8 +1,10 @@
 require_relative 'instance_counter'
 require_relative 'accessors'
 require_relative 'station'
+require_relative 'validation'
 class Route
   include InstanceCounter
+  include Validation
   extend Accessors
 
   # rubocop:disable Layout/EmptyLinesAroundAttributeAccessor
@@ -46,11 +48,11 @@ class Route
 
   # Валидация маршрута
   # rubocop:disable Metrics/AbcSize
-  def validate!
-    raise 'Первая и последняя станция не должны совпадать' if from.name == to.name
-    raise 'Не выбранно первая и последняя станция' if stations[0].nil? && stations[1].nil?
-    raise 'Не выбранно первая или последняя станция' if stations[0].nil? || stations[1].nil?
-  end
+  #def validate!
+  #  raise 'Первая и последняя станция не должны совпадать' if from.name == to.name
+  #  raise 'Не выбранно первая и последняя станция' if stations[0].nil? && stations[1].nil?
+  #  raise 'Не выбранно первая или последняя станция' if stations[0].nil? || stations[1].nil?
+  #end
 
   # Может добавлять промежуточную станцию в список
   def add_station!(station)

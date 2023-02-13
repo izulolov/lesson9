@@ -47,10 +47,10 @@ class InterfaceMethod
       case select
       when 1
         @trains << TrainPassenger.new(number)
-        puts "Создан пассажирский поезд с номером: #{number}" if @trains[-1].valid?
+        puts "Создан пассажирский поезд с номером: #{number}" #if @trains[-1].valid?
       when 2
         @trains << TrainCargo.new(number)
-        puts "Создан грузовой поезд с номером: #{number}" if @trains[-1].valid?
+        puts "Создан грузовой поезд с номером: #{number}" #if @trains[-1].valid?
       else
         puts 'Поезд не создан! Введите 1 чтобы создать пассажирский, 2 для грузогого'
       end
