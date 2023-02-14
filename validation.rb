@@ -5,14 +5,14 @@ module Validation
   end
 
   module ClassMethods
-    attr_accessor :checks
+    attr_reader :checks
 
     # Содержит метод класса validate. Этот метод принимает в качестве параметров имя проверяемого атрибута,
     # а также тип валидации и при необходимости дополнительные параметры. Возможные типы валидаций: presence, format, type
     def validate(*args)
       args ||= []
-      self.checks ||= []
-      self.checks << args
+      @checks  ||= []
+      checks << args
     end
   end
 
@@ -33,16 +33,16 @@ module Validation
 
     private
 
-    def presence(value)
-      raise 'Значение атрибута не может быть nil или пустой' if value.empty? || value.nil?
+    def presence(value, _choice)
+      raise "Значение #{value} не может быть nil или пустой" if value.empty? || value.nil?
     end
 
     def format(value, choice)
-      raise 'Неверный формат' if value !~ choice
+      raise "Неверный формат у #{value}!" if value !~ choice
     end
 
     def type(value, choice)
-      raise 'Классы не соотвествуют' if value.class == choice
+      raise "Классы не соотвествуют! #{value.class} != #{choice}" if instance_of?(choice)
     end
   end
 end

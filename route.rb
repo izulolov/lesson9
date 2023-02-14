@@ -6,7 +6,8 @@ class Route
   include InstanceCounter
   include Validation
   extend Accessors
-
+  
+  validate :stations, :presence
   # rubocop:disable Layout/EmptyLinesAroundAttributeAccessor
   attr_reader :stations
   # Проверка attr_accessor_with_history, можер работать с любим количеством атрибутов.
@@ -21,12 +22,12 @@ class Route
     register_instance
   end
 
-  def valid?
-    validate!
-    true
-  rescue StandardError
-    false
-  end
+  #def valid?
+  #  validate!
+  #  true
+  #rescue StandardError
+  #  false
+  #end
 
   # Может добавлять промежуточную станцию в список
   def add_station(station)

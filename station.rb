@@ -7,7 +7,7 @@ class Station
 
   NAME_FORMAT = /^[а-яё\s]{3,}$/i.freeze
 
-  validate :name, :type, Station
+  validate :name, :type, String
   validate :name, :format, NAME_FORMAT
 
   # rubocop:disable Style/ClassVars

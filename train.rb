@@ -9,6 +9,7 @@ class Train
 
   NUMBER_FORMAT = /^[а-яё|\d]{3}(-)*[а-яё|\d]{2}$/i.freeze
 
+  #validate :number, :format, NUMBER_FORMAT
   # rubocop:disable Style/ClassVars
   @@all_trains = []
 
